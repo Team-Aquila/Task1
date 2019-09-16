@@ -1,0 +1,30 @@
+.page{
+	height: 100vh;
+	position: relative;
+}
+
+form{
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+label{
+	padding: 7px;
+}
+
+input{
+	padding: 10px;
+	border-radius: 4px;
+	border-style: solid;
+	border-color: gray;
+	margin: 15px;
+	display: block;
+}
+
+.mid-ma{
+	width: fit-content;
+	margin: auto;
+}
