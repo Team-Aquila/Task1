@@ -11,7 +11,6 @@ a{
 .page{
 	height: 100vh;
 	position: relative;
-	/*background: linear-gradient(to right, #6A1B9A 40%, #AB47BC);*/
 	background-color: #4a154b;
 	color: #fff;
 }
@@ -22,9 +21,6 @@ form{
 	border-radius: 5px
 }
 
-form:hover{
-
-}
 .tl{
     height: fit-content;
     width: fit-content;
