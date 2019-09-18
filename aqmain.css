@@ -45,7 +45,7 @@ a{
 	padding: 7px;
 	width: 50%;
 	height:100%;
-	/*color: #ffffff;*/
+	position: relative;
 	padding: 30px;
 }
 
