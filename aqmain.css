@@ -96,3 +96,10 @@ svg{
 	    font-size: 24px;
 	}
 }
+
+.cent-elt{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
