@@ -109,13 +109,22 @@ svg{
 .form-section>div input[type=checkbox]{
 	display: inline;
 	transform: scale(1.5);
+	margin-right: 10px;
+	vertical-align: middle;
 }
 
 .form-section>div input[type=submit]{
 	border-radius: 50px;
+	/*background-color: #5649CF;*/ /* background color changed due to contrast */
 	background-color: #5649CF;
 	color: white;
 	font-weight: bold;
+	border-color: transparent;
+	transition: .3s background-color;
+}
+
+.form-section>div input[type=submit]:hover{
+	background-color: #24188c;
 }
 
 @media (max-width: 768px){
