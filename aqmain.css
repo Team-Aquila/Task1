@@ -165,3 +165,17 @@ svg{
 .fr{
 	float: right;
 }
+
+.aqbtn{
+	width: fit-content;
+	margin: 60px auto 0;
+	background-color: var(--aquila-blue, #5649cf);
+    padding: 10px 25px;
+    border-radius: 10px;
+    color: white;
+}
+
+.aqbtn:hover{
+	transition: .3s background-color;
+	background-color:  #24188c;
+}
