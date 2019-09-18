@@ -12,6 +12,7 @@ a{
 :root{
 	--aquila-blue: #5649cf;
 	--aquila-blue-transparent: #E9E7FF;
+	--aquila-gray: #555555;
 }
 
 *{
@@ -23,7 +24,7 @@ a{
 
 .title{
 	font-size: larger;
-	color: #555555;
+	color: 	var(--aquila-gray, #555555);
 }
 
 .aqblue{
@@ -51,7 +52,7 @@ a{
 
 .opt2{
 	background-color: var(--aquila-blue, #5649cf);
-	color: #ffffff;
+	color: 	#ffffff;
 }
 
 .intro-section>div{
@@ -85,7 +86,7 @@ svg{
 
 .form-section form>div{
 	margin-bottom: 26px;
-	color: #555555;
+	color: 	var(--aquila-gray, #555555);
 }
 
 .form-section label{
@@ -144,7 +145,8 @@ svg{
 
 	.intro-section, .form-section{
 		width: 100%;
-		display: block;
+		flex-direction: column;
+		height: 100%;
 	}
 
 	.intro-section>div>h1{
