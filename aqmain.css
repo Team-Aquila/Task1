@@ -4,6 +4,11 @@
 	src: url(Muli/Muli-Regular.ttf);
 }
 
+a{
+	color: unset;
+	text-decoration: none;
+}
+
 :root{
 	--aquila-blue: #5649cf;
 	--aquila-blue-transparent: #E9E7FF;
@@ -16,6 +21,15 @@
 	box-sizing: border-box;
 }
 
+.title{
+	font-size: larger;
+	color: #555555;
+}
+
+.aqblue{
+	color: var(--aquila-blue, #5649cf);
+}
+
 .page{
 	height: 100vh;
 	display: flex;
@@ -23,6 +37,7 @@
 
 .intro-section, .form-section{
 	width: 50%;
+	position: relative;
 }
 
 .intro-section{
@@ -30,7 +45,6 @@
 	padding: 7px;
 	width: 50%;
 	height:100%;
-	/*color: #ffffff;*/
 	position: relative;
 	padding: 30px;
 }
@@ -41,17 +55,16 @@
 }
 
 .intro-section>div{
-	width: 90%;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	/*font-weight: 600;*/
 	font-size: 20px;
 	line-height: 35px;
 	/*height: 90%;*/
 	padding-left: 9px;
     margin-right: 30px;
+}
+
+.intro-section>div, .form-section>div{
+	width: 90%;
 }
 
 .intro-section>div>div{
@@ -70,6 +83,49 @@ svg{
 	line-height: 45px;
 }
 
+.form-section form>div{
+	margin-bottom: 26px;
+	color: #555555;
+}
+
+.form-section label{
+	font-weight: bold;
+	font-style: normal;
+}
+
+.form-section>div input{
+	display: block;
+	outline: none;
+	padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+.form-section>div input[type=email], .form-section>div input[type=password], .form-section>div input[type=submit]{
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #B5B5B5;
+}
+
+.form-section>div input[type=checkbox]{
+	display: inline;
+	transform: scale(1.5);
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.form-section>div input[type=submit]{
+	border-radius: 50px;
+	/*background-color: #5649CF;*/ /* background color changed due to contrast */
+	background-color: #5649CF;
+	color: white;
+	font-weight: bold;
+	border-color: transparent;
+	transition: .3s background-color;
+}
+
+.form-section>div input[type=submit]:hover{
+	background-color: #24188c;
+}
 
 @media (max-width: 768px){
 	.page{
@@ -102,4 +158,8 @@ svg{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.fr{
+	float: right;
 }
