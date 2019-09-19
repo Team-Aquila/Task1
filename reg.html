@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="aqmain.css">
-	<title>Aquila</title>
+	<title>Aquila Registration</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -28,11 +28,16 @@
 		<div class="form-section">
 
 			<div class="cent-elt">
-				<form action="/login" method="POST" autocomplete="off">
+				<form action="/reg" method="POST" autocomplete="off">
 					<div class="title">
 						<h1>
-							Log in
+							Sign up
 						</h1>
+					</div>
+
+					<div>
+						<label for="fname" >Fullname</label>
+						<input type="text" name="fname" id="fname" placeholder="John Doe" required>
 					</div>
 
 					<div>
@@ -46,15 +51,11 @@
 					</div>
 
 					<div>
-						<input type="checkbox" name="remember" value="Remember Me" id="remember">  <label for="remember">Keep me logged in</label>
-					</div>
-
-					<div>
 						<input type="submit" name="submit" value="Login">
 					</div>
 
 					<div>
-						Don’t have an account yet? <span class="aqblue"><a href="reg.html">Register</a></span> 
+						Don’t have an account yet? <span class="aqblue"><a href="">Register</a></span> 
 					</div>
 
 				</form>
