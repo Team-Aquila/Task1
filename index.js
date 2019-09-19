@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 
 
- let server = http.createServer((req, res)=>{
+let server = http.createServer((req, res)=>{
 	console.log(req.method);
 
 	if (req.method == "GET") {
@@ -45,8 +45,22 @@ app.post = (req, res)=>{
 		req.on("end", ()=>{
 			info = queryToJson(info)
 			info.userPassword = hash(info.userPassword);
-			console.log(info);
-			res.end("Thanks for login. We will send infomations to you at "+ info.userEmail)
+			// console.log(info);
+			fs.readFile("userdb.json", "utf8", (err, data)=>{
+				if (err) {throw new Error("file writing issue")}
+				data=JSON.parse(data);
+				for (i in data) {
+					console.log('here')
+					if(data[i].userEmail == info.userEmail 
+						&& data[i].userPassword == info.userPassword){
+						res.end("Thanks for login. We will send infomations to you at "+ info.userEmail);
+						break;
+					}
+					if (i == data.length-1) {
+						res.end("<h1> wrong email or password </h1>");
+					}
+				}
+			});
 		});
 	}else if (req.url =="/reg") {
 		let info = "?"
@@ -56,7 +70,18 @@ app.post = (req, res)=>{
 		req.on("end", ()=>{
 			info = queryToJson(info)
 			info.userPassword = hash(info.userPassword);
-			console.log(info);
+			// console.log(info);
+
+			fs.readFile("userdb.json", "utf8", (err, data)=>{
+				if (err) {throw new Error("file writing issue")}
+				// console.log(data);
+				data=JSON.parse(data);
+				data.push(info);
+				fs.writeFile("userdb.json", JSON.stringify(data), (err)=>{
+					if (err) {throw new Error("file writing issue")}
+					// console.log("done")
+				});
+			});
 			res.end("Thanks for registering with us. We will send infomations to you at "+ info.userEmail)
 		});
 	}
@@ -74,6 +99,29 @@ let pipeStaticFileForResponse = (path, res)=>{
 	});
 	st.pipe(res);
 }
+
+
+
+
+
+
+//  M77M105M99M97M105M97M104M32M69M102M102M105M111M110M103
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // special function
 function queryToJson(link){
@@ -96,8 +144,6 @@ function queryToJson(link){
 		return (a==':' || a==',')? a: a = `\"${a}\"`;
 	})
 	link = decodeURIComponent(`{${link.join('').replace(/\+/g, ' ')}}`);
-	// console.log(link);
-	// console.log(JSON.parse(link));
 	try{
 		return JSON.parse(link);
 	}catch(errmsg){
