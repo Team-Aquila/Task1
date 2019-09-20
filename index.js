@@ -1,5 +1,6 @@
 const http = require("http");
 const fs = require("fs");
+const port = process.env.PORT || 3000;
 
 
 let server = http.createServer((req, res)=>{
@@ -10,7 +11,7 @@ let server = http.createServer((req, res)=>{
 	}else if(req.method == "POST"){
 		app.post(req, res);
 	}
-}).listen(8080, console.log('server is ready'));
+}).listen(port, console.log('server is ready'));
 
 let app = {
 	path: __dirname
@@ -99,29 +100,6 @@ let pipeStaticFileForResponse = (path, res)=>{
 	});
 	st.pipe(res);
 }
-
-
-
-
-
-
-//  M77M105M99M97M105M97M104M32M69M102M102M105M111M110M103
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // special function
 function queryToJson(link){
