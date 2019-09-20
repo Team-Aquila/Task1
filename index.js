@@ -58,6 +58,8 @@ app.post = (req, res)=>{
 				for (i in data) {
 					if(data[i].userEmail == info.userEmail 
 						&& data[i].userPassword == info.userPassword){
+						
+						console.log(data[i].userEmail == info.userEmail && data[i].userPassword == info.userPassword)
 						res.end(
 							_reportCard.replace("{{title}}", "Welcome")
 							.replace("{{message}}", "Welcome")
@@ -65,12 +67,12 @@ app.post = (req, res)=>{
 						);
 						break;
 					}
-					res.end(
-						_reportCard.replace("{{title}}", "Failed")
-						.replace("{{message}}", "Sorry")
-						.replace("{{details}}", "You entered a wrong email or password")
-					);
 				}
+				res.end(
+					_reportCard.replace("{{title}}", "Failed")
+					.replace("{{message}}", "Sorry")
+					.replace("{{details}}", "You entered a wrong email or password")
+				);
 			});
 		});
 	}else if (req.url =="/reg") {
