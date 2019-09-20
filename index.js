@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 
 
 let server = http.createServer((req, res)=>{
-	console.log(req.method);
+	// console.log(req.method);
 
 	if (req.method == "GET") {
 		app.get(req, res);
@@ -18,7 +18,7 @@ let app = {
 }
 
 app.get = (req, res)=>{
-		console.log("here", typeof req.url)	
+	// console.log("here", typeof req.url)	
 	if (req.url.toString().endsWith("/") && req.url.toString().length === 1) {
 		res.writeHead(200, {"Content-Type": "text/html"});
 		pipeStaticFileForResponse(__dirname+req.url+"index.html", res);
@@ -33,11 +33,11 @@ app.get = (req, res)=>{
 		res.writeHead(200, {"Content-Type": "text/plain"});
 		res.end()
 	}
-	console.log('get', server._connectionKey);
+	// console.log('get', server._connectionKey);
 }
 
 app.post = (req, res)=>{
-	console.log('post')
+	// console.log('post')
 	if (req.url =="/login") {
 		let info = "?"
 		req.on("data", (chunk)=>{
@@ -51,7 +51,7 @@ app.post = (req, res)=>{
 				if (err) {throw new Error("file writing issue")}
 				data=JSON.parse(data);
 				for (i in data) {
-					console.log('here')
+					// console.log('here')
 					if(data[i].userEmail == info.userEmail 
 						&& data[i].userPassword == info.userPassword){
 						res.end("Thanks for login. We will send infomations to you at "+ info.userEmail);
@@ -93,7 +93,7 @@ let error404 =(res)=>{
 }
 
 let pipeStaticFileForResponse = (path, res)=>{
-	console.log(typeof path, path);
+	// console.log(typeof path, path);
 	let st = fs.createReadStream(path);
 	st.on("error", ()=>{
 		error404(res);
@@ -125,7 +125,7 @@ function queryToJson(link){
 	try{
 		return JSON.parse(link);
 	}catch(errmsg){
-		console.log("error", errmsg);
+		// console.log("error", errmsg);
 		return "error in url query string"
 	}
 }
