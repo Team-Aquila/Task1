@@ -39,7 +39,9 @@ app.get = (req, res)=>{
 	// console.log('get', server._connectionKey);
 }
 
+let reportCard = fs.readFileSync("report.html", "utf8");
 app.post = (req, res)=>{
+
 	// console.log('post')
 	if (req.url =="/login") {
 		let info = "?"
@@ -49,20 +51,25 @@ app.post = (req, res)=>{
 		req.on("end", ()=>{
 			info = queryToJson(info)
 			info.userPassword = hash(info.userPassword);
-			// console.log(info);
 			fs.readFile("userdb.json", "utf8", (err, data)=>{
+				let _reportCard = reportCard;
 				if (err) {throw new Error("file writing issue")}
 				data=JSON.parse(data);
 				for (i in data) {
-					// console.log('here')
 					if(data[i].userEmail == info.userEmail 
 						&& data[i].userPassword == info.userPassword){
-						res.end("Thanks for login. We will send infomations to you at "+ info.userEmail);
+						res.end(
+							_reportCard.replace("{{title}}", "Welcome")
+							.replace("{{message}}", "Welcome")
+							.replace("{{details}}", "You are logged in as <b style='color:#5649cf;'>"+info.userEmail+"</b>")
+						);
 						break;
 					}
-					if (i == data.length-1) {
-						res.end("<h1> wrong email or password </h1>");
-					}
+					res.end(
+						_reportCard.replace("{{title}}", "Failed")
+						.replace("{{message}}", "Sorry")
+						.replace("{{details}}", "You entered a wrong email or password")
+					);
 				}
 			});
 		});
@@ -79,14 +86,19 @@ app.post = (req, res)=>{
 			fs.readFile("userdb.json", "utf8", (err, data)=>{
 				if (err) {throw new Error("file writing issue")}
 				// console.log(data);
+				let _reportCard = reportCard;
 				data=JSON.parse(data);
 				data.push(info);
 				fs.writeFile("userdb.json", JSON.stringify(data), (err)=>{
 					if (err) {throw new Error("file writing issue")}
 					// console.log("done")
+						res.end(
+							_reportCard.replace("{{title}}", "Welcome")
+							.replace("{{message}}", "Welcome")
+							.replace("{{details}}", "You are registered as <b style='color:#5649cf;'>"+info.userEmail+"</b>")
+						);
 				});
 			});
-			res.end("Thanks for registering with us. We will send infomations to you at "+ info.userEmail)
 		});
 	}
 }
