@@ -1,0 +1,23 @@
+{
+  "name": "aquila",
+  "version": "1.0.0",
+  "description": "This is a login validation app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Aquila/Task1.git"
+  },
+  "keywords": [
+    "validation",
+    "validate"
+  ],
+  "author": "Team-Aquila",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Team-Aquila/Task1/issues"
+  },
+  "homepage": "https://github.com/Team-Aquila/Task1#readme"
+}
