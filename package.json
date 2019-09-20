@@ -4,7 +4,11 @@
   "description": "This is a login validation app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node-dev index.js"
+  },
+  "dependencies": {
+    "node-dev": "4.0.0"
   },
   "repository": {
     "type": "git",
