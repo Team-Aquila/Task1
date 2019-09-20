@@ -21,17 +21,20 @@ app.get = (req, res)=>{
 	// console.log("here", typeof req.url)	
 	if (req.url.toString().endsWith("/") && req.url.toString().length === 1) {
 		res.writeHead(200, {"Content-Type": "text/html"});
-		pipeStaticFileForResponse(__dirname+req.url+"index.html", res);
-	}
-	if (req.url.toString().endsWith(".html")){
+		pipeStaticFileForResponse(app.path+"/index.html", res);
+		/*let hold = "";
+		fs.createReadStream(__dirname+req.url+"index.html")
+		.on("data", (chunk)=>{hold+=chunk.toString()})
+		.on("end", ()=>{res.end(hold)});*/
+	}else if (req.url.toString().endsWith(".html")){
 		res.writeHead(200, {"Content-Type": "text/html"});
 		pipeStaticFileForResponse(app.path+req.url, res);
 	}else if (req.url.toString().endsWith(".css")) {
 		res.writeHead(200, {"Content-Type": "text/css"});
 		pipeStaticFileForResponse(app.path+req.url, res);
 	} else {
-		res.writeHead(200, {"Content-Type": "text/plain"});
-		res.end()
+		res.writeHead(404, {"Content-Type": "text/html"});
+		error404(res)
 	}
 	// console.log('get', server._connectionKey);
 }
